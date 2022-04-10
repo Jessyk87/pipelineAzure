@@ -40,4 +40,4 @@ stages:
           containerRegistry: 'acrdevopsbp'
           repository: ms-devops
           command: 'push'
-          tags: 'latest'
+          tags: '0.0.1-SNAPSHOT'
