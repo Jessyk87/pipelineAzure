@@ -38,6 +38,6 @@ stages:
         displayName: Push Docker image
         inputs:
           containerRegistry: 'acrdevopsbp'
-          repository: 'spring-boot-example'
+          repository: ms-devops:0.0.1-SNAPSHOT'
           command: 'push'
           tags: 'latest'
