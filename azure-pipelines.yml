@@ -6,6 +6,10 @@
 trigger:
 - main
 
+variables:
+  imageRepo: ms-devops
+  tag: '0.0.1-SNAPSHOT'
+
 stages:
 - stage: Build
   displayName: Build stage
@@ -38,6 +42,52 @@ stages:
         displayName: Push Docker image
         inputs:
           containerRegistry: 'acrdevopsbp'
-          repository: ms-devops
+          repository: '$(imageRepo)'
           command: 'push'
-          tags: '0.0.1-SNAPSHOT'
+          tags: |
+            $(tag)
+            lastest
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: '$(Pipeline.Workspace)/manifests'
+          artifact: 'manifests'
+          publishLocation: 'pipeline'
+        
+- stage: Deploy
+  displayName: Deploy to Dev
+  dependsOn: Build
+  variables:
+    acrsecret: k8sacrauth
+    acrdevurl: 'acrdevopsbp.azurecr.io'
+    replicaNo: 3
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy to AKS
+    environment: 'k8sdev.default'
+    pool: 
+      vmImage: ubuntu-latest
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'manifests'
+              targetPath: '$(Pipeline.Workspace)/manifests'
+          - task: KubernetesManifest@0
+            inputs:
+              action: 'createSecret'
+              namespace: 'default'
+              secretType: 'dockerRegistry'
+              secretName: '$(acrsecret)'
+              dockerRegistryEndpoint: 'acrdevopsbp'
+          - task: KubernetesManifest@0
+            inputs:
+              action: 'deploy'
+              namespace: 'default'
+              manifests: |
+                $(Pipeline.Workspace)/manifests/deployment.yml
+                $(Pipeline.Workspace)/manifests/service.yml
+              containers: '$(acrdevurl)/$(imageRepo):$(tag)'
+              imagePullSecrets: '$(acrsecret)'
