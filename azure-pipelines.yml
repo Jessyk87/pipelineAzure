@@ -44,9 +44,7 @@ stages:
           containerRegistry: 'acrdevopsbp'
           repository: '$(imageRepo)'
           command: 'push'
-          tags: |
-            $(tag)
-            lastest
+          tags: '$(tag)'
       - task: PublishPipelineArtifact@1
         inputs:
           targetPath: '$(Pipeline.Workspace)/manifests'
