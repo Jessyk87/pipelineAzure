@@ -16,4 +16,4 @@ spec:
         - name: ms-devops 
           image: acrdevopsbp.azurecr.io/ms-devops
           ports:
-          - containerPort: 80
+          - containerPort: 8080
