@@ -10,12 +10,13 @@
 	</parent>
 	<groupId>com.bp</groupId>
 	<artifactId>ms-devops</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${VERSION_NUMBER}</version>
 	<name>ms-devops</name>
 	<description>DevOps Technical Assessment</description>
 	<properties>
 		<java.version>11</java.version>
 		<testcontainers.version>1.16.2</testcontainers.version>
+		<VERSION_NUMBER>0.0.1-SNAPSHOT</VERSION_NUMBER>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -58,7 +59,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>acrdevopsbp.azurecr.io/${project.artifactId}</name>
+						<name>acrdevopsbp.azurecr.io/${project.artifactId}:${VERSION_NUMBER}</name>
 					</image>
 					<layers>
 						<enabled>true</enabled>
