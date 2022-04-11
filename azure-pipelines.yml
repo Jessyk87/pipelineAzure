@@ -68,7 +68,7 @@ stages:
         
 - stage: Deploy
   displayName: Deploy to Dev
-  dependsOn: Testing
+  dependsOn: Build
   variables:
     acrsecret: k8sacrauth
     acrdevurl: 'acrdevopsbp.azurecr.io'
