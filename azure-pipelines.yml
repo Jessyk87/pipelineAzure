@@ -44,6 +44,11 @@ stages:
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
           goals: 'package'
+      - task: SonarCloudAnalyze@1
+        displayName: Run Code Analysis
+        
+      - task: SonarCloudPublish@1
+        displayName: 'Publish Quality Gate Result'
 
       - task: Maven@3
         displayName: Build Docker image
