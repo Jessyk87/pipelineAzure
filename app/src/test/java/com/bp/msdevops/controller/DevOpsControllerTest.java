@@ -29,7 +29,7 @@ import org.springframework.test.web.servlet.MockMvc;
  */
 @WebMvcTest(controllers = DevOpsController.class)
 @ExtendWith(SpringExtension.class)
-@ComponentScan("com.bp.msdevops.domain.service")
+@ComponentScan("com.bp.msdevops.service")
 class DevOpsControllerTest {
 
 	@Autowired
