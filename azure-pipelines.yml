@@ -14,8 +14,11 @@ stages:
 - stage: Build
   displayName: Build stage
   jobs:
-    - job: CleanCode
-      displayName: Clean Code
+
+    - job: Build
+      displayName: Build Job
+      pool:
+        vmImage: ubuntu-latest
       steps:
       - task: SonarCloudPrepare@1
         inputs:
@@ -28,12 +31,6 @@ stages:
             # sonar.exclusions=**/*.bin
             sonar.projectKey=pedroalexanderdev_devops-bp
             sonar.projectName=devops-bp
-
-    - job: Build
-      displayName: Build Job
-      pool:
-        vmImage: ubuntu-latest
-      steps:
       - task: Maven@3
         inputs:
           mavenPomFile: 'pom.xml'
