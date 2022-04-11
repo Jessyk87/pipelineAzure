@@ -2,7 +2,7 @@ package com.bp.msdevops.domain.enumeration;
 
 public enum EstadoErrorEnum {
 
-	VALIDACION("ERROR_VALIDACION", "ERROR VALIDACION"), EJECUCION("ERROR_EJECUCION", "ERROR EN EJECUCION");
+	ERROR("ERROR", "ERROR"), VALIDACION("ERROR_VALIDACION", "ERROR VALIDACION"), EJECUCION("ERROR_EJECUCION", "ERROR EN EJECUCION");
 
 	private String code;
 	private String descripcion;

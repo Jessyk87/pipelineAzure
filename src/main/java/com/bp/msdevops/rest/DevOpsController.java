@@ -38,16 +38,16 @@ public class DevOpsController {
 
     @GetMapping()
     public String sendMessageErrorGet() {
-        return "ERROR";
+        return EstadoErrorEnum.ERROR.getCode();
     }
 
     @PutMapping()
     public String sendMessageErrorPut() {
-        return "ERROR";
+        return EstadoErrorEnum.ERROR.getCode();
     }
 
     @DeleteMapping()
     public String sendMessageErrorDelete() {
-        return "ERROR";
+        return EstadoErrorEnum.ERROR.getCode();
     }
 }
