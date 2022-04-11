@@ -14,6 +14,21 @@ stages:
 - stage: Build
   displayName: Build stage
   jobs:
+    - job: CleanCode
+      displayName: Clean Code
+      steps:
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'sonarcloud'
+          organization: 'pedroalexanderdev'
+          scannerMode: 'Other'
+          extraProperties: |
+            # Additional properties that will be passed to the scanner,
+            # Put one key=value per line, example:
+            # sonar.exclusions=**/*.bin
+            sonar.projectKey=pedroalexanderdev_devops-bp
+            sonar.projectName=devops-bp
+
     - job: Build
       displayName: Build Job
       pool:
@@ -53,7 +68,7 @@ stages:
         
 - stage: Deploy
   displayName: Deploy to Dev
-  dependsOn: Build
+  dependsOn: Testing
   variables:
     acrsecret: k8sacrauth
     acrdevurl: 'acrdevopsbp.azurecr.io'
