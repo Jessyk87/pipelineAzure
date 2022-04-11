@@ -1,12 +1,16 @@
-package com.bp.msdevops.domain.exception;
+package com.bp.msdevops.exception;
 
-import com.bp.msdevops.domain.enumeration.*;
-import com.bp.msdevops.dto.ApiResponse;
+import com.bp.msdevops.dto.ApiResponseDTO;
+import com.bp.msdevops.enumeration.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+/**
+ * 
+ * @author pedroalexandertenezaca
+ *
+ */
 public class ManejoExcepciones {
 	
 	private String nombreClase;
@@ -17,10 +21,10 @@ public class ManejoExcepciones {
 		this.nombreClase = nombreClase;
 	}
 	
-	public ApiResponse registraLogExcepcionRest(Exception ex, String estadoError) {		
+	public ApiResponseDTO registraLogExcepcionRest(Exception ex, String estadoError) {		
 		String mensaje = mensajeEstandarError(ex, estadoError);
 		mostrarMensajeErrorEnConsola(ex, mensaje);
-		return new ApiResponse(EstadoApiResponseEnum.ERROR.getCode(), EstadoApiResponseEnum.ERROR.getDescripcion());		
+		return new ApiResponseDTO(EstadoApiResponseEnum.ERROR.getCode(), EstadoApiResponseEnum.ERROR.getDescripcion());		
 	}
 	
 	private String mensajeEstandarError(Exception ex, String estadoError) {

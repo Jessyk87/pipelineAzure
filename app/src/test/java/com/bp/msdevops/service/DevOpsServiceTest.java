@@ -8,11 +8,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.bp.msdevops.domain.service.DevOpsService;
 import com.bp.msdevops.payload.DevOpsPayload;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * 
+ * @author pedroalexandertenezaca
+ *
+ */
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration
 public class DevOpsServiceTest {

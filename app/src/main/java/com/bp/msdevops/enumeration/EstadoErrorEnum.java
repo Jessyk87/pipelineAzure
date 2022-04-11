@@ -1,8 +1,13 @@
-package com.bp.msdevops.domain.enumeration;
+package com.bp.msdevops.enumeration;
 
+/**
+ * 
+ * @author pedroalexandertenezaca
+ *
+ */
 public enum EstadoErrorEnum {
 
-	ERROR("ERROR", "ERROR"), VALIDACION("ERROR_VALIDACION", "ERROR VALIDACION"), EJECUCION("ERROR_EJECUCION", "ERROR EN EJECUCION");
+	VALIDACION("ERROR_VALIDACION", "ERROR VALIDACION"), EJECUCION("ERROR_EJECUCION", "ERROR EN EJECUCION");
 
 	private String code;
 	private String descripcion;

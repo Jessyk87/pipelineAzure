@@ -1,5 +1,10 @@
-package com.bp.msdevops.domain.enumeration;
+package com.bp.msdevops.enumeration;
 
+/**
+ * 
+ * @author pedroalexandertenezaca
+ *
+ */
 public enum EstadoApiResponseEnum {
 	OK("OK", "ESTADO SATISFACTORIO"),ERROR("ERROR", "ERROR EN EJECUCION");
 

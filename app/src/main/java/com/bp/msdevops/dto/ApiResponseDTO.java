@@ -5,19 +5,19 @@ package com.bp.msdevops.dto;
  * @author pedroalexandertenezaca
  *
  */
-public class ApiResponse {
+public class ApiResponseDTO {
 
 	private String status;
 	private String message;
 
 	private Object objeto;
 
-	public ApiResponse(String status, Object objeto) {
+	public ApiResponseDTO(String status, Object objeto) {
 		this.status = status;
 		this.objeto = objeto;
 	}
 
-	public ApiResponse(String status, String message) {
+	public ApiResponseDTO(String status, String message) {
 		this.status = status;
 		this.message = message;
 	}

@@ -1,8 +1,7 @@
 package com.bp.msdevops.controller;
 
-import com.bp.msdevops.domain.service.DevOpsService;
 import com.bp.msdevops.payload.DevOpsPayload;
-import com.bp.msdevops.rest.DevOpsController;
+import com.bp.msdevops.service.DevOpsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -23,6 +22,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+/**
+ * 
+ * @author pedroalexandertenezaca
+ *
+ */
 @WebMvcTest(controllers = DevOpsController.class)
 @ExtendWith(SpringExtension.class)
 @ComponentScan("com.bp.msdevops.domain.service")
