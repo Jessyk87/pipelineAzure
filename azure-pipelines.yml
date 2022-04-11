@@ -31,16 +31,22 @@ stages:
             # sonar.exclusions=**/*.bin
             sonar.projectKey=pedroalexanderdev_devops-bp
             sonar.projectName=devops-bp
+
       - task: Maven@3
         inputs:
           mavenPomFile: 'pom.xml'
-          goals: 'clean verify sonar:sonar'
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          codeCoverageToolOption: JaCoCo
           javaHomeOption: 'JDKVersion'
           jdkVersionOption: '1.11'
           mavenVersionOption: 'Default'
+          mavenOptions: '-Xmx3072m'
+          mavenAuthenticateFeed: false
+          effectivePomSkip: false
+          sonarQubeRunAnalysis: true
+          isJacocoCoverageReportXML: true
+          sqMavenPluginVersionChoice: 'latest'
+
       - task: SonarCloudAnalyze@1
         displayName: Run Code Analysis
         
@@ -54,16 +60,7 @@ stages:
           goals: 'spring-boot:build-image'
           publishJUnitResults: false
           jdkVersionOption: '1.11'
-          
-      - task: Maven@3
-        inputs:
-          mavenPomFile: 'pom.xml'
-          mavenOptions: '-Xmx3072m'
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '1.11'
-          jdkArchitectureOption: 'x64'
-          publishJUnitResults: false
-          goals: 'package'
+
       - task: Docker@2
         displayName: Push Docker image
         inputs:
