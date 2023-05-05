@@ -23,14 +23,14 @@ stages:
       - task: SonarCloudPrepare@1
         inputs:
           SonarCloud: 'sonarcloud'
-          organization: 'pedroalexanderdev'
+          organization: 'jessyAviles'
           scannerMode: 'Other'
           extraProperties: |
             # Additional properties that will be passed to the scanner,
             # Put one key=value per line, example:
             # sonar.exclusions=**/*.bin
-            sonar.projectKey=pedroalexanderdev_devops-bp
-            sonar.projectName=devops-bp
+            sonar.projectKey=jessy_devops
+            sonar.projectName=devops
 
       - task: Maven@3
         inputs:
